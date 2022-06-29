@@ -1,5 +1,6 @@
 package com.leetcode.test.code2171;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Me {
@@ -20,5 +21,6 @@ public class Me {
             res = Math.min(res, cur);
         }
         return res;
+
     }
 }
