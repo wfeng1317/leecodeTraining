@@ -1,50 +1,29 @@
 package com.leetcode.test.code2523;
 
-/**
- * 注意target为0时表示有一组
- */
+import com.leetcode.test.TreeNode;
+
+import java.util.Deque;
+import java.util.LinkedList;
+
 public class Me {
-
-    public int combinationSum4(int[] nums, int target) {
-        //每个target所能得到的组合数
-        //int[] dp01 = new int[target + 1];
-        int[] dp02 = new int[target + 1];
-        //Arrays.fill(dp01, -1);
-        //dp01[0] = 1;
-        process02(nums, target, dp02);
-        return dp02[target];
-        //return process01(nums, target, dp01);
+    public TreeNode increasingBST(TreeNode root) {
+        TreeNode res = new TreeNode();
+        Deque<Integer> temp = new LinkedList<>();
+        f(root, temp);
+        TreeNode pre = res;
+        for(Integer i : temp){
+            pre.right = new TreeNode(i);
+            pre = pre.right;
+        }
+        return res.right;
     }
 
-    /**
-     * 记忆化搜索
-     */
-    public int process01(int[] nums, int target, int[] dp){
-        if(target < 0){
-            return 0;
+    public void f(TreeNode root, Deque<Integer> temp){
+        if(root == null){
+            return;
         }
-        if(dp[target] != -1){
-            return dp[target];
-        }
-        int res = 0;
-        for(int i = 0; i < nums.length; i++){
-            res += process01(nums, target - nums[i], dp);
-        }
-        dp[target] = res;
-        return dp[target];
-    }
-
-    /**
-     * dp
-     */
-    public void process02(int[] nums, int target, int[] dp){
-        dp[0] = 1;
-        for(int i = 1; i <= target; i++){
-            for(int j = 0; j < nums.length; j++){
-                if(i - nums[j] >= 0){
-                    dp[i] += dp[i - nums[j]];
-                }
-            }
-        }
+        f(root.left, temp);
+        temp.addLast(root.val);
+        f(root.right, temp);
     }
 }
