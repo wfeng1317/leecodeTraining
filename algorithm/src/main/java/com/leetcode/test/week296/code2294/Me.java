@@ -1,4 +1,4 @@
-package com.leetcode.test.code2294;
+package com.leetcode.test.week296.code2294;
 
 import java.util.Arrays;
 

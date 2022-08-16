@@ -1,4 +1,4 @@
-package com.leetcode.test.code2293;
+package com.leetcode.test.week296.code2293;
 
 public class Me {
 

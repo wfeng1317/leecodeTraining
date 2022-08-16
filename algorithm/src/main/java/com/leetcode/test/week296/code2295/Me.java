@@ -1,4 +1,4 @@
-package com.leetcode.test.code2295;
+package com.leetcode.test.week296.code2295;
 
 import java.util.HashMap;
 import java.util.Map;
